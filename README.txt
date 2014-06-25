@@ -13,7 +13,9 @@ Add child posts right from a hierarchical post editing screen.
 
 == Description ==
 
-Add child posts right from a hierarchical post editing screen.
+By adding 2 links on the editing screen: `Add New Child` and `Add New Sibling`, just right after the `Add New` link, this plugin let you add child or sibling posts much more quickly.
+
+Please note the added links will only show on hierarchical post types.
 
 == Installation ==
 
