@@ -17,6 +17,16 @@
 
 	<h2><?php echo esc_html( get_admin_page_title() ); ?></h2>
 
-	<!-- @TODO: Provide markup for your options page here. -->
+	<form method="post" action="options.php">
+		<?php
+			$plugin = Quick_Add_Child::get_instance();
+
+			settings_fields( $plugin->get_plugin_slug() );
+			do_settings_sections( $plugin->get_plugin_slug() );
+
+			submit_button();
+
+		?>
+	</form>
 
 </div>

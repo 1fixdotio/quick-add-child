@@ -59,6 +59,7 @@ class Quick_Add_Child_Admin {
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_scripts' ) );
 
 		// Add the options page and menu item.
+		require_once( plugin_dir_path( __FILE__ ) . 'includes/settings.php' );
 		add_action( 'admin_menu', array( $this, 'add_plugin_admin_menu' ) );
 
 		// Add an action link pointing to the options page.
