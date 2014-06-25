@@ -28,7 +28,7 @@ class Quick_Add_Child {
 	 *
 	 * @var     string
 	 */
-	const VERSION = '0.3.0';
+	const VERSION = '0.4.0';
 
 	/**
 	 *
@@ -67,11 +67,8 @@ class Quick_Add_Child {
 		// Activate plugin when new blog is added
 		add_action( 'wpmu_new_blog', array( $this, 'activate_new_site' ) );
 
-		/* Define custom functionality.
-		 * Refer To http://codex.wordpress.org/Plugin_API#Hooks.2C_Actions_and_Filters
-		 */
-		// add_action( '@TODO', array( $this, 'action_method_name' ) );
-		// add_filter( '@TODO', array( $this, 'filter_method_name' ) );
+		// Display the admin notification
+		add_action( 'admin_notices', array( $this, 'admin_notice_activation' ) );
 
 	}
 
@@ -223,19 +220,48 @@ class Quick_Add_Child {
 	/**
 	 * Fired for each blog when the plugin is activated.
 	 *
-	 * @since    0.1.0
+	 * @since    0.4.0
 	 */
 	private static function single_activate() {
-		// @TODO: Define activation functionality here
+
+		if ( false == get_option( 'qac-display-activation-message' ) ) {
+			add_option( 'qac-display-activation-message', true );
+		}
 	}
 
 	/**
 	 * Fired for each blog when the plugin is deactivated.
 	 *
-	 * @since    0.1.0
+	 * @since    0.4.0
 	 */
 	private static function single_deactivate() {
-		// @TODO: Define deactivation functionality here
+
+		delete_option( 'qac-display-activation-message' );
+	}
+
+	/**
+	 * Display admin notice when activating the plugin.
+	 *
+	 * @since 0.4.0
+	 */
+	public function admin_notice_activation() {
+
+		$screen = get_current_screen();
+
+		if ( true == get_option( 'qac-display-activation-message' ) && 'plugins' == $screen->id ) {
+			$plugin = self::get_instance();
+
+			$html  = '<div class="updated">';
+			$html .= '<p>';
+				$html .= sprintf( __( 'Visit the <strong><a href="%s">Quick Add Child Settings</a></strong> page to enable advanced funtions from this plugin.', $plugin->get_plugin_slug() ), admin_url( 'options-general.php?page=' . $plugin->get_plugin_slug() ) );
+			$html .= '</p>';
+			$html .= '</div><!-- /.updated -->';
+
+			echo $html;
+
+			delete_option( 'qac-display-activation-message' );
+
+		}
 	}
 
 	/**
@@ -251,32 +277,6 @@ class Quick_Add_Child {
 		load_textdomain( $domain, trailingslashit( WP_LANG_DIR ) . $domain . '/' . $domain . '-' . $locale . '.mo' );
 		load_plugin_textdomain( $domain, FALSE, basename( plugin_dir_path( dirname( __FILE__ ) ) ) . '/languages/' );
 
-	}
-
-	/**
-	 * NOTE:  Actions are points in the execution of a page or process
-	 *        lifecycle that WordPress fires.
-	 *
-	 *        Actions:    http://codex.wordpress.org/Plugin_API#Actions
-	 *        Reference:  http://codex.wordpress.org/Plugin_API/Action_Reference
-	 *
-	 * @since    0.1.0
-	 */
-	public function action_method_name() {
-		// @TODO: Define your action hook callback here
-	}
-
-	/**
-	 * NOTE:  Filters are points of execution in which WordPress modifies data
-	 *        before saving it or sending it to the browser.
-	 *
-	 *        Filters: http://codex.wordpress.org/Plugin_API#Filters
-	 *        Reference:  http://codex.wordpress.org/Plugin_API/Filter_Reference
-	 *
-	 * @since    0.1.0
-	 */
-	public function filter_method_name() {
-		// @TODO: Define your filter hook callback here
 	}
 
 }
