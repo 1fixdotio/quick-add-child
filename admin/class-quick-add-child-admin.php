@@ -24,7 +24,7 @@ class Quick_Add_Child_Admin {
 	/**
 	 * Instance of this class.
 	 *
-	 * @since    1.0.0
+	 * @since    0.1.0
 	 *
 	 * @var      object
 	 */
@@ -33,7 +33,7 @@ class Quick_Add_Child_Admin {
 	/**
 	 * Slug of the plugin screen.
 	 *
-	 * @since    1.0.0
+	 * @since    0.1.0
 	 *
 	 * @var      string
 	 */
@@ -43,7 +43,7 @@ class Quick_Add_Child_Admin {
 	 * Initialize the plugin by loading admin scripts & styles and adding a
 	 * settings page and menu.
 	 *
-	 * @since     1.0.0
+	 * @since     0.1.0
 	 */
 	private function __construct() {
 
@@ -56,7 +56,7 @@ class Quick_Add_Child_Admin {
 
 		// Load admin style sheet and JavaScript.
 		// add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_styles' ) );
-		// add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_scripts' ) );
+		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_scripts' ) );
 
 		// Add the options page and menu item.
 		add_action( 'admin_menu', array( $this, 'add_plugin_admin_menu' ) );
@@ -71,15 +71,14 @@ class Quick_Add_Child_Admin {
 		 * Read more about actions and filters:
 		 * http://codex.wordpress.org/Plugin_API#Hooks.2C_Actions_and_Filters
 		 */
-		// add_action( '@TODO', array( $this, 'action_method_name' ) );
-		// add_filter( '@TODO', array( $this, 'filter_method_name' ) );
+		add_filter( 'page_attributes_dropdown_pages_args', array( $this, 'page_attributes_dropdown_pages_args' ), 10, 2 );
 
 	}
 
 	/**
 	 * Return an instance of this class.
 	 *
-	 * @since     1.0.0
+	 * @since     0.1.0
 	 *
 	 * @return    object    A single instance of this class.
 	 */
@@ -96,7 +95,7 @@ class Quick_Add_Child_Admin {
 	/**
 	 * Register and enqueue admin-specific style sheet.
 	 *
-	 * @since     1.0.0
+	 * @since     0.1.0
 	 *
 	 * @return    null    Return early if no settings page is registered.
 	 */
@@ -116,27 +115,32 @@ class Quick_Add_Child_Admin {
 	/**
 	 * Register and enqueue admin-specific JavaScript.
 	 *
-	 * @since     1.0.0
+	 * @since     0.2.0
 	 *
 	 * @return    null    Return early if no settings page is registered.
 	 */
-	public function enqueue_admin_scripts() {
+	public function enqueue_admin_scripts( $hook ) {
 
-		if ( ! isset( $this->plugin_screen_hook_suffix ) ) {
-			return;
+		global $post;
+
+		if ( 'post.php' == $hook && is_post_type_hierarchical( $post->post_type ) ) {
+			wp_enqueue_script( $this->plugin_slug . '-admin-script', plugins_url( 'assets/js/admin.js', __FILE__ ), array( 'jquery' ), Quick_Add_Child::VERSION, true );
 		}
 
-		$screen = get_current_screen();
-		if ( $this->plugin_screen_hook_suffix == $screen->id ) {
-			wp_enqueue_script( $this->plugin_slug . '-admin-script', plugins_url( 'assets/js/admin.js', __FILE__ ), array( 'jquery' ), Quick_Add_Child::VERSION );
-		}
+		$params = array(
+			'add_new_child' => __( 'Add New Child', 'quick-add-child' ),
+			'add_new_sibling' => __( 'Add New Sibling', 'quick-add-child' )
+			);
+		$params = apply_filters( 'quick_add_child_js_params', $params );
+
+		wp_localize_script( $this->plugin_slug . '-admin-script', 'quick_add_child_js_params', $params );
 
 	}
 
 	/**
 	 * Register the administration menu for this plugin into the WordPress Dashboard menu.
 	 *
-	 * @since    1.0.0
+	 * @since    0.1.0
 	 */
 	public function add_plugin_admin_menu() {
 
@@ -160,7 +164,7 @@ class Quick_Add_Child_Admin {
 	/**
 	 * Render the settings page for this plugin.
 	 *
-	 * @since    1.0.0
+	 * @since    0.1.0
 	 */
 	public function display_plugin_admin_page() {
 
@@ -170,7 +174,7 @@ class Quick_Add_Child_Admin {
 	/**
 	 * Add settings action link to the plugins page.
 	 *
-	 * @since    1.0.0
+	 * @since    0.1.0
 	 */
 	public function add_action_links( $links ) {
 
@@ -184,29 +188,17 @@ class Quick_Add_Child_Admin {
 	}
 
 	/**
-	 * NOTE:     Actions are points in the execution of a page or process
-	 *           lifecycle that WordPress fires.
+	 * Set default parent by the `parent_id` URL Parameter
 	 *
-	 *           Actions:    http://codex.wordpress.org/Plugin_API#Actions
-	 *           Reference:  http://codex.wordpress.org/Plugin_API/Action_Reference
-	 *
-	 * @since    1.0.0
+	 * @since    0.2.0
 	 */
-	public function action_method_name() {
-		// @TODO: Define your action hook callback here
-	}
+	public function page_attributes_dropdown_pages_args( $dropdown_args, $post ) {
 
-	/**
-	 * NOTE:     Filters are points of execution in which WordPress modifies data
-	 *           before saving it or sending it to the browser.
-	 *
-	 *           Filters: http://codex.wordpress.org/Plugin_API#Filters
-	 *           Reference:  http://codex.wordpress.org/Plugin_API/Filter_Reference
-	 *
-	 * @since    1.0.0
-	 */
-	public function filter_method_name() {
-		// @TODO: Define your filter hook callback here
+		if ( isset( $_GET['parent_id'] ) && ! empty( $_GET['parent_id'] ) ) {
+			$dropdown_args['selected'] = $_GET['parent_id'];
+		}
+
+		return $dropdown_args;
 	}
 
 }

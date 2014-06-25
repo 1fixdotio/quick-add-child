@@ -24,11 +24,11 @@ class Quick_Add_Child {
 	/**
 	 * Plugin version, used for cache-busting of style and script file references.
 	 *
-	 * @since   1.0.0
+	 * @since   0.1.0
 	 *
 	 * @var     string
 	 */
-	const VERSION = '1.0.0';
+	const VERSION = '0.2.0';
 
 	/**
 	 *
@@ -38,7 +38,7 @@ class Quick_Add_Child {
 	 * of text. Its value should match the Text Domain file header in the main
 	 * plugin file.
 	 *
-	 * @since    1.0.0
+	 * @since    0.1.0
 	 *
 	 * @var      string
 	 */
@@ -47,7 +47,7 @@ class Quick_Add_Child {
 	/**
 	 * Instance of this class.
 	 *
-	 * @since    1.0.0
+	 * @since    0.1.0
 	 *
 	 * @var      object
 	 */
@@ -57,7 +57,7 @@ class Quick_Add_Child {
 	 * Initialize the plugin by setting localization and loading public scripts
 	 * and styles.
 	 *
-	 * @since     1.0.0
+	 * @since     0.1.0
 	 */
 	private function __construct() {
 
@@ -78,7 +78,7 @@ class Quick_Add_Child {
 	/**
 	 * Return the plugin slug.
 	 *
-	 * @since    1.0.0
+	 * @since    0.1.0
 	 *
 	 * @return    Plugin slug variable.
 	 */
@@ -89,7 +89,7 @@ class Quick_Add_Child {
 	/**
 	 * Return an instance of this class.
 	 *
-	 * @since     1.0.0
+	 * @since     0.1.0
 	 *
 	 * @return    object    A single instance of this class.
 	 */
@@ -106,7 +106,7 @@ class Quick_Add_Child {
 	/**
 	 * Fired when the plugin is activated.
 	 *
-	 * @since    1.0.0
+	 * @since    0.1.0
 	 *
 	 * @param    boolean    $network_wide    True if WPMU superadmin uses
 	 *                                       "Network Activate" action, false if
@@ -143,7 +143,7 @@ class Quick_Add_Child {
 	/**
 	 * Fired when the plugin is deactivated.
 	 *
-	 * @since    1.0.0
+	 * @since    0.1.0
 	 *
 	 * @param    boolean    $network_wide    True if WPMU superadmin uses
 	 *                                       "Network Deactivate" action, false if
@@ -181,7 +181,7 @@ class Quick_Add_Child {
 	/**
 	 * Fired when a new site is activated with a WPMU environment.
 	 *
-	 * @since    1.0.0
+	 * @since    0.1.0
 	 *
 	 * @param    int    $blog_id    ID of the new blog.
 	 */
@@ -203,7 +203,7 @@ class Quick_Add_Child {
 	 * - not spam
 	 * - not deleted
 	 *
-	 * @since    1.0.0
+	 * @since    0.1.0
 	 *
 	 * @return   array|false    The blog ids, false if no matches.
 	 */
@@ -223,7 +223,7 @@ class Quick_Add_Child {
 	/**
 	 * Fired for each blog when the plugin is activated.
 	 *
-	 * @since    1.0.0
+	 * @since    0.1.0
 	 */
 	private static function single_activate() {
 		// @TODO: Define activation functionality here
@@ -232,7 +232,7 @@ class Quick_Add_Child {
 	/**
 	 * Fired for each blog when the plugin is deactivated.
 	 *
-	 * @since    1.0.0
+	 * @since    0.1.0
 	 */
 	private static function single_deactivate() {
 		// @TODO: Define deactivation functionality here
@@ -241,7 +241,7 @@ class Quick_Add_Child {
 	/**
 	 * Load the plugin text domain for translation.
 	 *
-	 * @since    1.0.0
+	 * @since    0.1.0
 	 */
 	public function load_plugin_textdomain() {
 
@@ -260,7 +260,7 @@ class Quick_Add_Child {
 	 *        Actions:    http://codex.wordpress.org/Plugin_API#Actions
 	 *        Reference:  http://codex.wordpress.org/Plugin_API/Action_Reference
 	 *
-	 * @since    1.0.0
+	 * @since    0.1.0
 	 */
 	public function action_method_name() {
 		// @TODO: Define your action hook callback here
@@ -273,7 +273,7 @@ class Quick_Add_Child {
 	 *        Filters: http://codex.wordpress.org/Plugin_API#Filters
 	 *        Reference:  http://codex.wordpress.org/Plugin_API/Filter_Reference
 	 *
-	 * @since    1.0.0
+	 * @since    0.1.0
 	 */
 	public function filter_method_name() {
 		// @TODO: Define your filter hook callback here
