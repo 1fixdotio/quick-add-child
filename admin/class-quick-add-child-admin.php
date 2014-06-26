@@ -128,9 +128,11 @@ class Quick_Add_Child_Admin {
 			wp_enqueue_script( $this->plugin_slug . '-admin-script', plugins_url( 'assets/js/admin.js', __FILE__ ), array( 'jquery' ), Quick_Add_Child::VERSION, true );
 		}
 
+		$options = get_option( $this->plugin_slug );
 		$params = array(
 			'add_new_child' => __( 'Add New Child', 'quick-add-child' ),
-			'add_new_sibling' => __( 'Add New Sibling', 'quick-add-child' )
+			'add_new_sibling' => __( 'Add New Sibling', 'quick-add-child' ),
+			'hide_add_new' => ( isset( $options['hide_add_new'] ) ) ? $options['hide_add_new'] : 'off'
 			);
 		$params = apply_filters( 'quick_add_child_js_params', $params );
 
