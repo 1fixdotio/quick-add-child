@@ -8,13 +8,13 @@
  * @author    1fixdotio <1fixdotio@gmail.com>
  * @license   GPL-2.0+
  * @link      http://1fix.io/quick-add-child
- * @copyright 2014 Your Name or Company Name
+ * @copyright 2014 1Fix.io
  *
  * @wordpress-plugin
  * Plugin Name:       Quick Add Child
  * Plugin URI:        http://1fix.io/quick-add-child
  * Description:       Add child posts right from a hierarchical post editing screen.
- * Version:           0.4.0
+ * Version:           0.5.0
  * Author:            1fixdotio
  * Author URI:        http://1fix.io
  * Text Domain:       quick-add-child

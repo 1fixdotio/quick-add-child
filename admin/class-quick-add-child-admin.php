@@ -22,6 +22,18 @@
 class Quick_Add_Child_Admin {
 
 	/**
+	 * Unique identifier for your plugin.
+	 *
+	 *
+	 * Call $plugin_slug from public plugin class later.
+	 *
+	 * @since    0.5.0
+	 *
+	 * @var      string
+	 */
+	protected $plugin_slug = null;
+
+	/**
 	 * Instance of this class.
 	 *
 	 * @since    0.1.0
@@ -66,12 +78,6 @@ class Quick_Add_Child_Admin {
 		$plugin_basename = plugin_basename( plugin_dir_path( realpath( dirname( __FILE__ ) ) ) . $this->plugin_slug . '.php' );
 		add_filter( 'plugin_action_links_' . $plugin_basename, array( $this, 'add_action_links' ) );
 
-		/*
-		 * Define custom functionality.
-		 *
-		 * Read more about actions and filters:
-		 * http://codex.wordpress.org/Plugin_API#Hooks.2C_Actions_and_Filters
-		 */
 		add_filter( 'page_attributes_dropdown_pages_args', array( $this, 'page_attributes_dropdown_pages_args' ), 10, 2 );
 
 	}
@@ -132,7 +138,7 @@ class Quick_Add_Child_Admin {
 		$params = array(
 			'add_new_child' => __( 'Add New Child', 'quick-add-child' ),
 			'add_new_sibling' => __( 'Add New Sibling', 'quick-add-child' ),
-			'hide_add_new' => ( isset( $options['hide_add_new'] ) ) ? $options['hide_add_new'] : 'off'
+			'hide_add_new' => ( isset( $options['hide_add_new'] ) ) ? $options['hide_add_new'] : 'off',
 			);
 		$params = apply_filters( 'quick_add_child_js_params', $params );
 
@@ -172,6 +178,7 @@ class Quick_Add_Child_Admin {
 	public function display_plugin_admin_page() {
 
 		include_once( 'views/admin.php' );
+
 	}
 
 	/**
@@ -202,6 +209,7 @@ class Quick_Add_Child_Admin {
 		}
 
 		return $dropdown_args;
+
 	}
 
 }

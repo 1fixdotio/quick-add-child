@@ -30,7 +30,7 @@ if ( is_multisite() ) {
 			delete_option( 'quick-add-child' );
 
 			//info: remove and optimize tables
-			$GLOBALS['wpdb']->query("OPTIMIZE TABLE `" .$GLOBALS['wpdb']->prefix."options`");
+			$GLOBALS['wpdb']->query( "OPTIMIZE TABLE `" .$GLOBALS['wpdb']->prefix."options`" );
 
 			restore_current_blog();
 		}
@@ -42,5 +42,5 @@ if ( is_multisite() ) {
 	delete_option( 'quick-add-child' );
 
 	//info: remove and optimize tables
-	$GLOBALS['wpdb']->query("OPTIMIZE TABLE `" .$GLOBALS['wpdb']->prefix."options`");
+	$GLOBALS['wpdb']->query( "OPTIMIZE TABLE `" .$GLOBALS['wpdb']->prefix."options`" );
 }

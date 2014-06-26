@@ -81,14 +81,6 @@ class Quick_Add_Child_Settings {
 			'general'
 		);
 
-		add_settings_field(
-			'ajax_mode',
-			__( 'Ajax Mode', $this->plugin_slug ),
-			array( $this, 'ajax_mode_callback' ),
-			$this->plugin_slug,
-			'general'
-		);
-
 		register_setting(
 			$this->plugin_slug,
 			$this->plugin_slug
@@ -105,7 +97,6 @@ class Quick_Add_Child_Settings {
 
 		$defaults = array(
 			'hide_add_new' => 'off',
-			'ajax_mode' => 'off',
 		);
 
 		return apply_filters( 'default_settings', $defaults );
@@ -118,23 +109,11 @@ class Quick_Add_Child_Settings {
 		$option  = isset( $options['hide_add_new'] ) ? $options['hide_add_new'] : '';
 
 		$html  = '<input type="checkbox" id="hide_add_new" name="' . $this->plugin_slug . '[hide_add_new]" value="on"' . checked( 'on', $option, false ) . '/>';
-		$html .= '<label for="hide_add_new">' . __( 'Hide <code>Add New</code> link on post editing screen.', $this->plugin_slug ) . '</label>';
+		$html .= '<label for="hide_add_new">' . __( 'Hide <code>Add New</code> link on hierarchical post editing screen.', $this->plugin_slug ) . '</label>';
 
 		echo $html;
 
 	} // end hide_add_new_callback
-
-	public function ajax_mode_callback() {
-
-		$options = get_option( $this->plugin_slug );
-		$option  = ( isset( $options['ajax_mode'] ) ) ? $options['ajax_mode'] : '';
-
-		$html  = '<input type="checkbox" id="ajax_mode" name="' . $this->plugin_slug . '[ajax_mode]" value="on"' . checked( 'on', $option, false ) . '/>';
-		$html .= '<label for="ajax_mode">' . __( 'When click on <code>Add New Child</code> or <code>Add New Sibling</code>, creating a child / sibling post with AJAX.', $this->plugin_slug ) . '</label>';
-
-		echo $html;
-
-	} // end ajax_mode_callback
 }
 
 Quick_Add_Child_Settings::get_instance();

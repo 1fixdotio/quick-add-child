@@ -1,0 +1,59 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Quick Add Child\n"
+"POT-Creation-Date: 2014-06-26 14:47+0800\n"
+"PO-Revision-Date: 2014-06-26 14:52+0800\n"
+"Last-Translator: Yoren Chang <yorenchang@gmail.com>\n"
+"Language-Team: Yoren Chang <yorenchang@gmail.com>\n"
+"Language: zh_TW\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.6.5\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Poedit-SearchPath-0: .\n"
+
+#: admin/class-quick-add-child-admin.php:139
+msgid "Add New Child"
+msgstr "新增子項目"
+
+#: admin/class-quick-add-child-admin.php:140
+msgid "Add New Sibling"
+msgstr "新增同級項目"
+
+#: admin/class-quick-add-child-admin.php:164
+msgid "Quick Add Child Settings"
+msgstr "Quick Add Child 設定"
+
+#: admin/class-quick-add-child-admin.php:165
+msgid "Quick Add Child"
+msgstr ""
+
+#: admin/class-quick-add-child-admin.php:193
+msgid "Settings"
+msgstr ""
+
+#: admin/includes/settings.php:71
+msgid "General"
+msgstr "一般"
+
+#: admin/includes/settings.php:78
+msgid "Hide Add New"
+msgstr "隱藏新增連結"
+
+#: admin/includes/settings.php:112
+msgid "Hide <code>Add New</code> link on hierarchical post editing screen."
+msgstr "在階層化的 Post Type 編輯畫面中，隱藏預設的新增連結。"
+
+#: public/class-quick-add-child.php:260
+#, php-format
+msgid ""
+"Visit the <strong><a href=\"%s\">Quick Add Child Settings</a></strong> page "
+"to enable advanced funtions from this plugin."
+msgstr ""
+"造訪 <strong><a href=\"%s\">Quick Add Child 設定</a></strong>，啟用進階功能。"

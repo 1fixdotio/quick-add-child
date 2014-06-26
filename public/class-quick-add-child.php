@@ -28,7 +28,7 @@ class Quick_Add_Child {
 	 *
 	 * @var     string
 	 */
-	const VERSION = '0.4.0';
+	const VERSION = '0.5.0';
 
 	/**
 	 *
@@ -80,7 +80,9 @@ class Quick_Add_Child {
 	 * @return    Plugin slug variable.
 	 */
 	public function get_plugin_slug() {
+
 		return $this->plugin_slug;
+
 	}
 
 	/**
@@ -98,6 +100,7 @@ class Quick_Add_Child {
 		}
 
 		return self::$instance;
+
 	}
 
 	/**
@@ -220,7 +223,7 @@ class Quick_Add_Child {
 	/**
 	 * Fired for each blog when the plugin is activated.
 	 *
-	 * @since    0.4.0
+	 * @since    0.5.0
 	 */
 	private static function single_activate() {
 
@@ -232,17 +235,18 @@ class Quick_Add_Child {
 	/**
 	 * Fired for each blog when the plugin is deactivated.
 	 *
-	 * @since    0.4.0
+	 * @since    0.5.0
 	 */
 	private static function single_deactivate() {
 
 		delete_option( 'qac-display-activation-message' );
+
 	}
 
 	/**
 	 * Display admin notice when activating the plugin.
 	 *
-	 * @since 0.4.0
+	 * @since 0.5.0
 	 */
 	public function admin_notice_activation() {
 
@@ -260,22 +264,21 @@ class Quick_Add_Child {
 			echo $html;
 
 			delete_option( 'qac-display-activation-message' );
-
 		}
+
 	}
 
 	/**
 	 * Load the plugin text domain for translation.
 	 *
-	 * @since    0.1.0
+	 * @since    0.5.0
 	 */
 	public function load_plugin_textdomain() {
 
 		$domain = $this->plugin_slug;
 		$locale = apply_filters( 'plugin_locale', get_locale(), $domain );
 
-		load_textdomain( $domain, trailingslashit( WP_LANG_DIR ) . $domain . '/' . $domain . '-' . $locale . '.mo' );
-		load_plugin_textdomain( $domain, FALSE, basename( plugin_dir_path( dirname( __FILE__ ) ) ) . '/languages/' );
+		load_textdomain( $domain, trailingslashit( WP_PLUGIN_DIR ) . 'quick-add-child/languages/' . $locale . '.mo' );
 
 	}
 
