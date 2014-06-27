@@ -77,6 +77,9 @@ class Quick_Add_Child_Admin {
 		$plugin_basename = plugin_basename( plugin_dir_path( realpath( dirname( __FILE__ ) ) ) . $this->plugin_slug . '.php' );
 		add_filter( 'plugin_action_links_' . $plugin_basename, array( $this, 'add_action_links' ) );
 
+		// Display the admin notification
+		add_action( 'admin_notices', array( $this, 'admin_notice_activation' ) );
+
 		add_filter( 'page_attributes_dropdown_pages_args', array( $this, 'page_attributes_dropdown_pages_args' ), 10, 2 );
 
 	}
@@ -173,6 +176,28 @@ class Quick_Add_Child_Admin {
 			),
 			$links
 		);
+
+	}
+
+	/**
+	 * Display admin notice when activating the plugin.
+	 *
+	 * @since 0.6.0
+	 */
+	public function admin_notice_activation() {
+
+		$screen = get_current_screen();
+
+		if ( isset( $_GET['parent_id'] ) && ! empty( $_GET['parent_id'] ) && 'post' == $screen->base ) {
+			$post_parent = get_post( $_GET['parent_id'] );
+
+			$post_edit_url = sprintf( '<a href="%s" target="_blank">%s</a>', admin_url( 'post.php?post=' . $post_parent->ID . '&action=edit' ), esc_html( $post_parent->post_title ) );
+			$html  = '<div class="update-nag">';
+				$html .= sprintf( __( 'You are about to create a child post of %s.', $this->plugin_slug ), $post_edit_url );
+			$html .= '</div><!-- /.update-nag -->';
+
+			echo $html;
+		}
 
 	}
 

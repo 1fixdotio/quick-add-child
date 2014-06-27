@@ -28,7 +28,7 @@ class Quick_Add_Child {
 	 *
 	 * @var     string
 	 */
-	const VERSION = '0.5.0';
+	const VERSION = '0.6.0';
 
 	/**
 	 *
@@ -122,12 +122,14 @@ class Quick_Add_Child {
 				// Get all blog ids
 				$blog_ids = self::get_blog_ids();
 
-				foreach ( $blog_ids as $blog_id ) {
+				if ( $blog_ids ) {
+					foreach ( $blog_ids as $blog_id ) {
 
-					switch_to_blog( $blog_id );
-					self::single_activate();
+						switch_to_blog( $blog_id );
+						self::single_activate();
 
-					restore_current_blog();
+						restore_current_blog();
+					}
 				}
 
 			} else {
@@ -159,13 +161,15 @@ class Quick_Add_Child {
 				// Get all blog ids
 				$blog_ids = self::get_blog_ids();
 
-				foreach ( $blog_ids as $blog_id ) {
+				if ( $blog_ids ) {
+					foreach ( $blog_ids as $blog_id ) {
 
-					switch_to_blog( $blog_id );
-					self::single_deactivate();
+						switch_to_blog( $blog_id );
+						self::single_deactivate();
 
-					restore_current_blog();
+						restore_current_blog();
 
+					}
 				}
 
 			} else {

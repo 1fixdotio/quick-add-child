@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Quick Add Child\n"
-"POT-Creation-Date: 2014-06-26 14:47+0800\n"
-"PO-Revision-Date: 2014-06-26 14:52+0800\n"
+"POT-Creation-Date: 2014-06-27 20:25+0800\n"
+"PO-Revision-Date: 2014-06-27 20:26+0800\n"
 "Last-Translator: Yoren Chang <yorenchang@gmail.com>\n"
 "Language-Team: Yoren Chang <yorenchang@gmail.com>\n"
 "Language: zh_TW\n"
@@ -18,25 +18,30 @@ msgstr ""
 "Plural-Forms: nplurals=1; plural=0;\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: admin/class-quick-add-child-admin.php:139
+#: admin/class-quick-add-child-admin.php:121
 msgid "Add New Child"
 msgstr "新增子項目"
 
-#: admin/class-quick-add-child-admin.php:140
+#: admin/class-quick-add-child-admin.php:122
 msgid "Add New Sibling"
 msgstr "新增同級項目"
 
-#: admin/class-quick-add-child-admin.php:164
+#: admin/class-quick-add-child-admin.php:146
 msgid "Quick Add Child Settings"
 msgstr "Quick Add Child 設定"
 
-#: admin/class-quick-add-child-admin.php:165
+#: admin/class-quick-add-child-admin.php:147
 msgid "Quick Add Child"
 msgstr ""
 
-#: admin/class-quick-add-child-admin.php:193
+#: admin/class-quick-add-child-admin.php:175
 msgid "Settings"
 msgstr ""
+
+#: admin/class-quick-add-child-admin.php:196
+#, php-format
+msgid "You are about to create a child post of %s."
+msgstr "你正在建立 %s 的子項目。"
 
 #: admin/includes/settings.php:71
 msgid "General"
