@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Quick Add Child\n"
-"POT-Creation-Date: 2014-06-27 20:25+0800\n"
-"PO-Revision-Date: 2014-06-27 20:26+0800\n"
+"POT-Creation-Date: 2014-06-27 20:44+0800\n"
+"PO-Revision-Date: 2014-06-27 20:44+0800\n"
 "Last-Translator: Yoren Chang <yorenchang@gmail.com>\n"
 "Language-Team: Yoren Chang <yorenchang@gmail.com>\n"
 "Language: zh_TW\n"
@@ -55,7 +55,7 @@ msgstr "隱藏新增連結"
 msgid "Hide <code>Add New</code> link on hierarchical post editing screen."
 msgstr "在階層化的 Post Type 編輯畫面中，隱藏預設的新增連結。"
 
-#: public/class-quick-add-child.php:260
+#: public/class-quick-add-child.php:264
 #, php-format
 msgid ""
 "Visit the <strong><a href=\"%s\">Quick Add Child Settings</a></strong> page "

@@ -78,7 +78,7 @@ class Quick_Add_Child_Admin {
 		add_filter( 'plugin_action_links_' . $plugin_basename, array( $this, 'add_action_links' ) );
 
 		// Display the admin notification
-		add_action( 'admin_notices', array( $this, 'admin_notice_activation' ) );
+		add_action( 'admin_notices', array( $this, 'admin_notice' ) );
 
 		add_filter( 'page_attributes_dropdown_pages_args', array( $this, 'page_attributes_dropdown_pages_args' ), 10, 2 );
 
@@ -184,7 +184,7 @@ class Quick_Add_Child_Admin {
 	 *
 	 * @since 0.6.0
 	 */
-	public function admin_notice_activation() {
+	public function admin_notice() {
 
 		$screen = get_current_screen();
 
