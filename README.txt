@@ -2,7 +2,7 @@
 
 Contributors: 1fixdotio, yoren
 Donate link: http://1fix.io/
-Tags: comments, spam
+Tags: pages, CPT, child post
 Requires at least: 3.5.1
 Tested up to: 3.9.1
 Stable tag: 0.6.0
