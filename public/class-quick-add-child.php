@@ -304,6 +304,9 @@ class Quick_Add_Child {
 				'parent' => 'new-content',
 				'title'  => __( 'Add New Sibling', $this->plugin_slug ),
 				'href'   => admin_url( 'post-new.php?post_type=' . $post->post_type . '&parent_id=' . $post->post_parent ),
+				'meta'   => array(
+					'target'   => '_blank',
+				)
 			);
 			$wp_admin_bar->add_menu( $args );
 
@@ -312,6 +315,9 @@ class Quick_Add_Child {
 				'parent' => 'new-content',
 				'title'  => __( 'Add New Child', $this->plugin_slug ),
 				'href'   => admin_url( 'post-new.php?post_type=' . $post->post_type . '&parent_id=' . $post->ID ),
+				'meta'   => array(
+					'target'   => '_blank',
+				)
 			);
 			$wp_admin_bar->add_menu( $args );
 		}
