@@ -14,7 +14,7 @@
  * Plugin Name:       Quick Add Child
  * Plugin URI:        http://1fix.io/quick-add-child
  * Description:       Add child posts right from a hierarchical post editing screen.
- * Version:           0.6.0
+ * Version:           0.7.0
  * Author:            1fixdotio
  * Author URI:        http://1fix.io
  * Text Domain:       quick-add-child

@@ -1,11 +1,11 @@
 === Quick Add Child ===
 
-Contributors: 1fixdotio, yoren
+Contributors: 1fixdotio
 Donate link: http://1fix.io/
 Tags: pages, CPT, child post
 Requires at least: 3.5.1
-Tested up to: 3.9.1
-Stable tag: 0.6.0
+Tested up to: 4.1.1
+Stable tag: 0.7.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -49,6 +49,9 @@ The `Add New Child / Sibling` link will open in a new browser tab, the plugin wi
 2. A settings page for this plugin.
 
 == Changelog ==
+
+= 0.7.0 =
+* Appending `Add New Child` and `Add New Sibling` links to the "new content" menu in the admin bar.
 
 = 0.6.0 =
 * First release.

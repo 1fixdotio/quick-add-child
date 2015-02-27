@@ -28,7 +28,7 @@ class Quick_Add_Child {
 	 *
 	 * @var     string
 	 */
-	const VERSION = '0.6.0';
+	const VERSION = '0.7.0';
 
 	/**
 	 *
@@ -289,7 +289,11 @@ class Quick_Add_Child {
 
 	}
 
-	// Add Adminbar Menus
+	/**
+	 * Add Adminbar Menus
+	 *
+	 * @since 0.7.0
+	 */
 	public function add_adminbar_menus() {
 
 		global $wp_admin_bar, $post;
