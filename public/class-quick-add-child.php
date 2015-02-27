@@ -70,6 +70,9 @@ class Quick_Add_Child {
 		// Display the admin notification
 		add_action( 'admin_notices', array( $this, 'admin_notice_activation' ) );
 
+		// Hook into the 'wp_before_admin_bar_render' action
+		add_action( 'wp_before_admin_bar_render', array( $this, 'add_adminbar_menus' ) );
+
 	}
 
 	/**
@@ -283,6 +286,31 @@ class Quick_Add_Child {
 		$locale = apply_filters( 'plugin_locale', get_locale(), $domain );
 
 		load_textdomain( $domain, trailingslashit( WP_PLUGIN_DIR ) . 'quick-add-child/languages/' . $locale . '.mo' );
+
+	}
+
+	// Add Adminbar Menus
+	public function add_adminbar_menus() {
+
+		global $wp_admin_bar, $post;
+
+		if ( isset( $post ) && is_post_type_hierarchical( $post->post_type ) ) {
+			$args = array(
+				'id'     => 'qac-add-silbling',
+				'parent' => 'new-content',
+				'title'  => __( 'Add New Sibling', $this->plugin_slug ),
+				'href'   => admin_url( 'post-new.php?post_type=' . $post->post_type . '&parent_id=' . $post->post_parent ),
+			);
+			$wp_admin_bar->add_menu( $args );
+
+			$args = array(
+				'id'     => 'qac-add-child',
+				'parent' => 'new-content',
+				'title'  => __( 'Add New Child', $this->plugin_slug ),
+				'href'   => admin_url( 'post-new.php?post_type=' . $post->post_type . '&parent_id=' . $post->ID ),
+			);
+			$wp_admin_bar->add_menu( $args );
+		}
 
 	}
 
