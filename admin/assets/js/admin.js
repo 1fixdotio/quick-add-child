@@ -2,7 +2,7 @@
 	"use strict";
 
 	var post_ID = $('#post_ID').val(),
-		parent_id = ( '' == $('#parent_id').val() ) ? 0 : $('#parent_id').val(),
+		parent_id = ( '' == $('#parent_id').val() || ! $('#parent_id').length ) ? 0 : $('#parent_id').val(),
 		addNew = $('.add-new-h2'),
 		html = '';
 
